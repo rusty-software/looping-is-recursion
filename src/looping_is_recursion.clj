@@ -8,7 +8,11 @@
     (f 1 exp)))
 
 (defn last-element [a-seq]
-  ":(")
+  (let [f (fn [acc coll]
+            (if (empty? coll)
+              acc
+              (recur (first coll) (rest coll))))]
+    (f (first a-seq) a-seq)))
 
 (defn seq= [seq1 seq2]
   ":(")
