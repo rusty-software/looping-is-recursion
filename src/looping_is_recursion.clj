@@ -1,7 +1,11 @@
 (ns looping-is-recursion)
 
 (defn power [base exp]
-  ":(")
+  (let [f (fn [acc n]
+            (if (zero? n)
+              acc
+              (recur (* acc base) (dec n))))]
+    (f 1 exp)))
 
 (defn last-element [a-seq]
   ":(")
