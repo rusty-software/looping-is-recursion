@@ -50,7 +50,15 @@
       (recur (rest coll) (toggle odds (first coll))))))
 
 (defn fast-fibo [n]
-  ":(")
+  (cond
+    (zero? n) 0
+    (= 1 n) 1
+    :else (loop [i 2
+                 prev 1
+                 curr 1]
+            (if (= i n)
+              curr
+              (recur (inc i) curr (+ prev curr))))))
 
 (defn cut-at-repetition [a-seq]
   [":("])
