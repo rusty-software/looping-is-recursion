@@ -31,7 +31,12 @@
       :else (recur (inc acc) (rest coll)))))
 
 (defn avg [a-seq]
-  -1)
+  (loop [sum 0
+         i 0
+         coll a-seq]
+    (cond
+      (empty? coll) (/ sum i)
+      :else (recur (+ sum (first coll)) (inc i) (rest coll)))))
 
 (defn parity [a-seq]
   ":(")
