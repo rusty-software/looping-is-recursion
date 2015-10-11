@@ -62,9 +62,9 @@
 
 (defn cut-at-repetition [a-seq]
   (loop [coll a-seq
-         acc #{}]
-    (if (or (empty? coll)
-            (acc (first coll)))
-      acc
-      (recur (rest coll) (conj acc (first coll))))))
+         acc []]
+    (cond
+      (empty? coll) acc
+      ((set acc) (first coll)) acc
+      :else (recur (rest coll) (conj acc (first coll))))))
 
