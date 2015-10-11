@@ -38,8 +38,16 @@
       (empty? coll) (/ sum i)
       :else (recur (+ sum (first coll)) (inc i) (rest coll)))))
 
+(defn toggle [a-set elem]
+  (if (contains? a-set elem)
+    (disj a-set elem)
+    (conj a-set elem)))
+
 (defn parity [a-seq]
-  ":(")
+  (loop [coll a-seq
+         odds #{}]
+    (if (empty? coll) odds
+      (recur (rest coll) (toggle odds (first coll))))))
 
 (defn fast-fibo [n]
   ":(")
