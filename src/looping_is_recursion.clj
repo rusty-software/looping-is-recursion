@@ -61,5 +61,10 @@
               (recur (inc i) curr (+ prev curr))))))
 
 (defn cut-at-repetition [a-seq]
-  [":("])
+  (loop [coll a-seq
+         acc #{}]
+    (if (or (empty? coll)
+            (acc (first coll)))
+      acc
+      (recur (rest coll) (conj acc (first coll))))))
 
